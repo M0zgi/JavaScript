@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Массивы</title>
+</head>
+
+<body>
+<script>
+    // массив - упорядоченная коллекция значений.
+    // элемент массива - отдельное значение массива.
+
+    let array1 = [];            // создание массива с использованием литерала (чаще используется этот вариант)
+    let array2 = new Array();   // создание массива с использованием конструктора
+
+    let cities = ["London", "Paris", "Berlin", "Rome"]; // создание массива и заполнение массива строковыми значениями
+    let values = ["London", 123, true]; // массив может хранить разные типы данных
+
+    // при использовании consol.log будут отображаться все элементы массива
+    console.log(cities);
+    console.log(values);
+    console.log(typeof values); // object - массив, особый вид объектов
+
+    // использование индекса
+    // массив - упорядоченная коллекция значений
+    // элемент массива - отдельное значение массива
+    // индекс - числовая позиция элемента массива
+
+    let cities1 = []; // создание пустого массива
+
+    // отсчет индексов массива начинается с нуля
+    cities1[0] = "London"; // присвоение значения по индексу 0
+    cities1[1] = "Paris"; // присвоение значения по индексу 1
+    cities1[2] = "Berlin"; // присвоение значения по индексу 2
+    cities1[3] = "Rome"; // присвоение значения по индексу 3
+
+    // чтение элемента массива по индексу 0
+    let cityName = cities1[0];
+    console.log("First array element - " + cityName);
+
+    cities1[0] = "LONDON"; // изменение значения элемента массива
+
+    console.log(cities1[0]);
+    console.log(cities1[1]);
+    console.log(cities1[2]);
+    console.log(cities1[3]);
+
+
+    // Свойство length
+    let cities2 = ["London", "Paris", "Berlin", "Rome"];
+    console.log(cities2.length); // length - свойство массива, в котором находится количество элементов массива
+
+    cities2[4] = "Lisbon"; // при изменении элемента массива, который находится за пределами текущей длины массива, происходит автоматическое обновление свойства length
+    console.log(cities2.length); // длина массива увеличилась на 1
+
+    cities2[10] = "Madrid";
+    console.log(cities2.length); // теперь длина массива 11, так как индекс последнего элемента массива 10
+
+    cities2.length = 2; // установив lenth меньше размера массива, мы удалили элементы, выходящие за пределы нового размера массива
+    console.log(cities2);
+
+    //for of
+    let cities3 = ["London", "Paris", "Berlin", "Rome"];
+
+    // запускаем цикл со счетчиком от 0 до 4 (длины массива)
+    for (let index = 0; index < cities3.length; index++) {
+        const element = cities3[index]; // обращаемся к элементу массива по индексу (значению счетчика цикла)
+        console.log(element);
+    }
+
+    // Вывод элементов массива с помощью цикла
+    let cities4 = ["London", "Paris", "Berlin", "Rome"];
+
+    // проход по значениям массива cities
+    // на каждой итерации в переменную city будет записываться следующее значение из массива cities
+    for (const city of cities4) {
+        console.log(city);
+    }
+
+    // Поиск максимального значения массива
+    let values1 = [10, 20, 4, 6, 11, 9, 125, 1, 8, 0, 3];
+    let max = Number.MIN_VALUE;
+
+    for (let index = 0; index < values1.length; index++) {
+        const element = values1[index];
+        if (element > max) {
+            max = element;
+        }
+    }
+
+    console.log("Максимальное значение массива - " + max);
+
+
+    // хранение названия, цены и количества выбранных продуктов в разных массивах - не оптимальное решение
+    // данный пример демонстрирует использование массивов и удобство их применения для приложений, где есть много однотипных данных
+    // этот код будет оптимизирован в уроке, посвященном работе с объектами
+
+    // массив с именами продуктов
+    let names = [];
+    names[0] = "Бумага офисная А4, 80 г/м2, 500 л";
+    names[1] = "Биндеры для бумаги 51 мм";
+    names[2] = "Ручка шариковая синяя";
+    names[3] = "Test";
+
+    // массив с ценами продуктов
+    let prices = [];
+    prices[0] = 280.25;
+    prices[1] = 56;
+    prices[2] = 12.50;
+    prices[3] = 10;
+
+    // массив с количеством покупаемых продуктов
+    let products = [];
+
+    // цикл для получения количества покупаемых продуктов
+    for (let index = 0; index < names.length; index++) {
+        const name = names[index];
+        const price = prices[index];
+
+        products[index] = +prompt(`Укажите количество продуктов '${name}', цена ${price}`, 0);
+    }
+
+    // цикл для расчета общей цены купленных продуктов
+    let totalPrice = 0;
+    for (let index = 0; index < products.length; index++) {
+        totalPrice += prices[index] * products[index];
+    }
+
+    alert(`Сумма Вашего заказа ${totalPrice}.`);
+
+    let isFreeShipping = totalPrice > 1000;
+    if (isFreeShipping) // иногда в условии используется только одна переменная
+    {
+        alert("Доставка будет бесплатной.");
+    }
+</script>
+</body>
+
+</html>
