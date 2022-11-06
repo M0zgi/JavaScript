@@ -7,8 +7,8 @@
 </head>
 <body>
         <ul>This PC
-            <ul class="d">
-                <li class="main" >Local Disc(C:)
+            <ul>
+                <li class="main" ><span class="block">Local Disc(C:)</span>
                     <ul>
                         <li>Program Files</li>
                         <li>Users</li>
@@ -16,7 +16,7 @@
                     </ul>
                 </li>
                 <br>
-                <li class="main">Local Disc(D:)
+                <li class="main"><span class="block">Local Disc(D:)</span>
                     <ul>
                         <li>New Folder 1</li>
                         <li>New Folder 2</li>
@@ -27,24 +27,27 @@
         </ul>
 
 <script>
-    document.addEventListener('click', look);
-    function look(e){
-        if(e.target.className == 'main'){
-            let param = e.target.children[0];
+
+    let bol = document.querySelectorAll('.block');
+
+    bol.forEach((item) => {
+        item.onmouseover = function(e) {
+            item.style = 'font-weight: 600';
+            item.style.cursor = "pointer";
+        };
+
+        item.onmouseout = function(e) {
+            item.style = 'font-weight: 100';
+            item.style.cursor = "pointer";
+        };
+
+        item.addEventListener("click", (e) => {
+            let param = e.target.nextElementSibling;
             param.style.display = param.style.display === "none" ? "block" : "none";
+        });
+    });
 
-        }
-    }
 
-    let bol = document.querySelector('.d');
-
-    bol.onmouseover = function(e) {
-        bol.style = 'font-weight: 600';
-    };
-
-    bol.onmouseout = function(e) {
-        bol.style = 'font-weight: 100';
-    };
 
 
 </script>
